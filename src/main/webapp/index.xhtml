@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Ingreso de proyecto</title>
+    </h:head>
+    <h:body>
+        <center>
+            <p:outputLabel value="Ingreso de proyecto" style="font-weight: bolder; font-size: 14px"/>
+        </center>
+    </h:body>
+
+    <h:form>
+        <center>
+            <p:outputLabel value="ORIGAMI PLANIFICACION 2024" />    <br/>
+            <p:outputLabel value="ESQUEMA DE PROYECTOS" />     
+        </center>
+
+        <p:panelGrid columns="2">
+            <h:panelGroup>
+                <p:outputLabel value="Proceso" />     <br/>
+
+                <p:selectOneMenu value="#{proyectoMB.proyecto.proceso}" converter="dtoConverter" >
+                    <f:selectItem itemLabel="Seleccione" />
+                    <f:selectItems value="#{proyectoMB.procesos}" var="proceso" itemValue="#{proceso}" itemLabel="#{proceso.descripcion}"/>
+                </p:selectOneMenu>    
+            </h:panelGroup>
+
+            <h:panelGroup>
+                <p:outputLabel value="Area" />     <br/>
+
+                <p:selectOneMenu value="#{proyectoMB.proyecto.area}" converter="dtoConverter">
+                    <f:selectItem itemLabel="Seleccione" />
+                    <f:selectItems value="#{proyectoMB.areas}" var="area" itemValue="#{area}" itemLabel="#{area.descripcion}"/>
+                </p:selectOneMenu>
+
+            </h:panelGroup>
+
+            <h:panelGroup>
+                <p:outputLabel value="Tipo" />     <br/>
+                <p:selectOneMenu value="#{proyectoMB.proyecto.tipo}">
+                    <f:selectItem itemLabel="Seleccione" />
+                    <f:selectItem itemLabel="GESTIÓN" itemValue="GESTION"/>
+                    <f:selectItem itemLabel="INVERSIÓN" itemValue="INVERSION"/>
+                </p:selectOneMenu>
+
+            </h:panelGroup>
+            <h:panelGroup>
+                <p:outputLabel value="Recurrente:" />     <br/>
+                <p:selectBooleanCheckbox value="#{proyectoMB.proyecto.recurrente}"/>    
+            </h:panelGroup>
+
+            <h:panelGroup>
+                <p:outputLabel value="Arrastre:" />     <br/>
+                <p:selectBooleanCheckbox value="#{proyectoMB.proyecto.arrastre}"/>    
+            </h:panelGroup>
+
+            <h:panelGroup>
+
+                <p:outputLabel value="Denominación del Proyecto:" />     <br/>
+                <p:inputText value="#{proyectoMB.proyecto.denominacion}"/>
+                <br/>
+            </h:panelGroup>
+            <h:panelGroup>
+                <p:outputLabel value=" Detalle en caso de arrastre:" />     <br/>
+                <p:inputText value="#{proyectoMB.proyecto.detalleArrastre}"/><br/>    
+            </h:panelGroup>
+            <h:panelGroup>
+                <p:outputLabel for="objetivo" value="Objetivo General:" />     <br/>
+                <p:inputText id="objetivo" value="#{proyectoMB.proyecto.objetivo}" required="true"/>  <br/>    
+            </h:panelGroup>
+            <h:panelGroup>
+                <p:outputLabel for="descripcionBreve" value="Descripción breve:" />     <br/>
+                <p:inputText id="descripcionBreve" value="#{proyectoMB.proyecto.descripcionBreve}" required="true"/>  <br/>
+            </h:panelGroup>
+
+
+
+
+            <p:commandButton value="Guardar" actionListener="#{proyectoMB.guardarProyecto()}" process="@all" update="@all" />
+
+
+
+        </p:panelGrid>
+
+
+        <!--        <p:dataTable value="# {areaMB.areas}" var="area" id="dtAreas"  >
+                    <p:column headerText="Descripción">
+                        <h:outputLabel value="# {area.descripcion}" />
+                    </p:column> 
+                </p:dataTable>
+
+<p:dataTable value="# {personaMB.personas}" var="persona" id="dtPersona"  >
+
+<p:column headerText="Identificación"> 
+<h:outputLabel value="# {persona.identificacion}" />
+</p:column>
+
+<p:column headerText="Nombre"> 
+<h:outputLabel value="# {persona.nombre}" />
+</p:column>
+
+
+<p:column headerText="Apellido" > 
+<h:outputLabel value="# {persona.apellido}" />
+</p:column>
+
+</p:dataTable>
+
+
+
+<p:dataTable value="# {procesoMB.procesos}" var="proceso" id="dtProceso"  >
+
+<p:column headerText="Descripción">
+<h:outputLabel value="# {proceso.descripcion}" />
+</p:column>
+
+</p:dataTable>-->
+
+
+
+
+    </h:form>
+
+</html>
